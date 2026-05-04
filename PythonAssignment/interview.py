@@ -1,4 +1,5 @@
 """ 1.addition of two numbers from given list is 11"""
+import ast
 
 l = [1,2,3,4,5,6,7,8,9,10]
 result = []
@@ -505,4 +506,405 @@ def count_up_to(n):
 for number in count_up_to(5):
     print(number)
 
-    "this is for interview preparation"
+
+""" 37.Create a class Person with attributes name and age. Print the details"""
+
+class Person:
+    def __init__(self,name,age):
+        self.name = name
+        self.age = age
+
+p = Person("amar",18)
+print(p.name,":",p.age)
+
+
+""" 38.Create a class Student with:
+    attributes: name, marks
+    method: display() to print details"""
+
+class Student():
+    def __init__(self,name,marks):
+        self.name = name
+        self.marks = marks
+
+    def display(self):
+        print(f"\tstudent name is {self.name}\n\t marks are {self.marks}")
+
+st = input("Enter student name: ")
+m = int(input("Enter marks: "))
+s = Student(st,m)
+s.display()
+
+
+""" 39.Write a class Calculator with methods:
+    add(), subtract(), multiply(), divide()"""
+
+class Calculator:
+    def add(self,*args):
+        return print("Addition of numbers is:",sum(args))
+    def subtract(self,*args):
+        result = args[0]
+        for num in args[1:]:
+            result -= num
+        return  result
+    def multiply(self,*args):
+        res = 1
+        for n in args:
+            res *= n
+        return res
+    def divide(self,*args):
+        result = args[0]
+        for x in args[1:]:
+            if x == 0:
+                print("division by zero is not allowed")
+            result /= x
+        return result
+
+
+a = Calculator()
+print(a.add(1,2,3,4,5,6,7,8,9,10))
+print(a.subtract(1,2,3,4,5,6,7,8,9,10))
+print(a.multiply(1,2,3,4,5,6,7,8,9,10))
+print(a.divide(1,2,3,4,5,6,7,8,9,10))
+
+
+""" 40.👉 Create a class Student with attributes name and marks. Print student details."""
+
+class Student:
+    def __init__(self,name,marks):
+        self.name = name
+        self.marks = marks
+
+    def display(self):
+        print(f"\tstudent name is {self.name}\n\t marks are {self.marks}")
+        if self.marks >= 35:
+            print("Pass")
+        else:
+            print("Fail")
+
+
+nm = input("Enter student name: ")
+m = int(input("Enter marks: "))
+s = Student(nm,m)
+s.display()
+
+
+""" 41.👉 Create a class Car with default speed = 0 and method to update speed."""
+class Car:
+    def __init__(self,speed = 0):
+        self.speed = speed
+
+    def update(self,a):
+        self.speed = a
+        print(f"the speed id {self.speed}")
+
+a = int(input("Enter a car speed: "))
+c = Car()
+c.update(a)
+
+
+""" 42.👉 Count how many objects are created using a class variable."""
+
+class Abc:
+    count = 0
+    def __init__(self):
+        Abc.count += 1
+
+a1 = Abc()
+a2 = Abc()
+a3 = Abc()
+
+print("No. of objects created: ",Abc.count)
+
+
+""" 43.👉 Write a class with: instance method , class method and static method"""
+
+class Car:
+    total_cars = 0   # class variable
+
+    def __init__(self, brand, speed):
+        self.brand = brand      # instance variable
+        self.speed = speed
+        Car.total_cars += 1
+
+    # 1️⃣ Instance Method
+    def display(self):
+        print(f"Car: {self.brand}, Speed: {self.speed}")
+
+    # 2️⃣ Class Method
+    @classmethod
+    def show_total_cars(cls):
+        print(f"Total cars created: {cls.total_cars}")
+
+    # 3️⃣ Static Method
+    @staticmethod
+    def is_fast(speed):
+        return speed > 100
+
+
+# Example usage
+c1 = Car("BMW", 120)
+c2 = Car("Audi", 80)
+
+c1.display()                 # Instance method
+Car.show_total_cars()        # Class method
+
+print(Car.is_fast(120))      # Static method → True
+print(Car.is_fast(70))       # Static method → False
+
+
+""" 44.Sort list of tuples using second value."""
+l1 = [(1, 3), (2, 1), (4, 2)]
+l1.sort(key=lambda x:x[1])
+print(l1)
+
+l2 = [(1, 3), (2, 1), (4, 2)]
+a = sorted(l2,key = lambda x:x[1])
+print(a)
+
+""" 45.Sort dictionary by values."""
+d = {'a': 3, 'b': 1, 'c': 2}
+sorted_d = sorted(d.items(),key = lambda x:x[1])
+print(sorted_d)
+
+""" 46.Lambda inside list comprehension - Multiply each element by two"""
+num = [1,2,3]
+result = [(lambda x :x*2)(x) for x in num]
+print(result)
+
+
+""" 47.Nested lambda - Add """
+
+nest = lambda x: lambda y: x + y
+print(nest(3)(6))
+
+
+""" 48.Conditional logic - Check if even or odd"""
+check = lambda x :"Even"if x%2 == 0 else "Odd"
+print(check(8))
+
+l = [1,2,3,4,5,6,7,8,9,10]
+check = list(map(lambda x:"Even" if x%2 == 0 else "Odd",l))
+print(check)
+
+
+""" 49.Sort strings by length"""
+wrds = ["apple","add","subtract","Given","useful","helplessness"]
+st = sorted(wrds,key = lambda x:len(x),reverse = True)
+print(st)
+
+
+""" 50.Combine map + filter - square only even numbers"""
+l = [1,2,3,4,5,6,7,8,9,10]
+result = list(map(lambda x:x**2,filter(lambda x:x%2 == 0,l)))
+print(result)
+
+
+""" 51.Find highest salary"""
+employees = [
+    {"name": "A", "salary": 5000},
+    {"name": "B", "salary": 8000},
+    {"name": "C", "salary": 6000}
+]
+highest = max(employees,key = lambda x:x["salary"])
+print(highest)
+
+
+""" 52.Encapsulation
+👉 Create a class BankAccount:
+private balance
+deposit()
+withdraw()
+getter method"""
+
+class BankAccount:
+    def __init__(self,balance):
+        self.__balance = balance
+    def get_balance(self):
+        return print(self.__balance)
+    def deposit(self,amount):
+        self.__balance += amount
+        print("The balance is: ",self.__balance)
+    def withdraw(self,amount):
+        self.__balance -= amount
+        print("The balance is: ",self.__balance)
+
+a = BankAccount(1000)
+print(a.deposit(100))
+a.get_balance()
+
+
+""" 53.Inheritance
+👉 Create:
+Animal class → method sound()
+Dog and Cat classes override sound"""
+
+class Animal:
+    def sound(self):
+        print("The animal sound")
+
+class Dog(Animal):
+    def sound(self):
+        print("Dog barks")
+
+class Cat(Animal):
+    def sound(self):
+        super().sound()
+        print("Meow Meow!!")
+
+d = Dog()
+d.sound()
+c = Cat()
+c.sound()
+
+
+""" 54.Multiple Inheritance
+👉 Create two classes:
+Father → skills
+Mother → skills
+Child inherits both"""
+
+class Father:
+    def Skills(self):
+        print("Father's skills: Driving")
+
+class Mother:
+    def Skills(self):
+        print("Mother's skills: Cooking")
+
+class Child(Father, Mother):
+    def Skills(self):
+        print("Child skills: ")
+        Father.Skills(self)
+        Mother.Skills(self)
+
+c = Child()
+c.Skills()
+
+
+""" 55.Abstraction
+👉 Use abc module:
+Abstract class Shape
+Abstract method area()
+Implement in Circle and Rectangle"""
+
+from abc import ABC, abstractmethod
+from math import pi
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+class Circle(Shape):
+    def __init__(self,r):
+        self.r = r
+    def area(self):
+        return pi * self.r * self.r
+
+class Rectangle(Shape):
+    def __init__(self,l,w):
+        self.l = l
+        self.w = w
+    def area(self):
+        return self.l * self.w
+
+c = Circle(3)
+print(c.area())
+t = Rectangle(3,4)
+print(t.area())
+
+
+""" 56.Use lambda with filter() to extract numbers greater than 50 from list."""
+
+l = [2,3,51,56,90,5,67]
+
+updated_list =list(filter(lambda x : x > 50,l))
+print(updated_list)
+
+
+""" 57.Use lambda with map() to multiply each element of list by 5."""
+
+l1 = [1,2,3,4,5,6,7,8,9,10]
+
+up_list = list(map(lambda x : x*5,l1))
+print(up_list)
+
+
+""" 58.Use lambda with sorted() to sort list of tuples based on second value."""
+l = [('a',4),('b',1),('d',3),('c',2)]
+sorted_list = list(sorted(l,key = lambda x : x[1]))
+print(sorted_list)
+
+
+""" 59.Use lambda to sort dictionary by values."""
+
+d = {"maths":98,"english":76,"physics":88,"chemistry":45,"biology":73}
+
+sorted_d = dict(sorted(d.items(),key = lambda x : x[1]))
+print(sorted_d)
+
+
+""" 60.Use lambda to sort dictionary by keys."""
+
+d = {"maths":98,"english":76,"physics":88,"chemistry":45,"biology":73}
+
+sort_d = dict(sorted(d.items(),key = lambda x : x[0]))
+print(sort_d)
+
+
+""" 61.Write a program to handle ZeroDivisionError using try-except."""
+
+try:
+    a = int(input("Enter a number: "))
+    b = int(input("Enter another number: "))
+    c = a/b
+    print(c)
+except ZeroDivisionError:
+    print("Error! cannot divide by zero")
+
+
+""" 62.Write a program to handle ValueError when user enters invalid integer input."""
+
+def add(a,b):
+    try:
+        print("sum :",int(a) + int(b))
+    except ValueError:
+        print("Incorrect input")
+
+add(2,"eij")
+
+
+""" 63.Write a program to handle ValueError and ZeroDivisionError"""
+
+def divide():
+
+    try:
+        a = int(input("Enter a number: "))
+        b = int(input("Enter another number: "))
+        print("Division : ", a / b)
+
+    except ValueError:
+        print("Incorrect input")
+    except ZeroDivisionError:
+        print("Error! cannot divide by zero")
+divide()
+
+
+""" 64.Write a program to take tuple of numbers from keyboard and print its sum and average."""
+t =eval(input("Enter a tuple: "))
+l = len(t)
+total = 0
+for i in t:
+    total += i
+print("Sum : ",total)
+print("Average : ",total/l)
+
+
+""" 65.Write a program to print different vowels present in the given word"""
+import ast    # Abstract Syntax Tree
+w = ast.literal_eval(input("Enter a word: ")).lower()
+s = set(w)
+v = {'a','e','i','o','u'}
+a = s.intersection(v)
+print(f"Different vowels present in {w} are :",a)
+
