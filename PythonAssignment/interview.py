@@ -908,3 +908,61 @@ v = {'a','e','i','o','u'}
 a = s.intersection(v)
 print(f"Different vowels present in {w} are :",a)
 
+
+""" 66.Student Grade system
+    attributes:name,marks
+    methods:calculate average,display grade"""
+import ast
+class Student:
+    def __init__(self,name,marks):
+        self.name = name
+        self.marks = marks
+
+    def calculate_avg(self):
+        self.avg = sum(self.marks)/len(self.marks)
+        print(f"Average marks : {self.avg}")
+
+    def display_grade(self):
+        if self.avg >= 90:
+            print(f"Grade : A and percentage : {self.avg}%")
+        elif self.avg >= 60:
+            print(f"Grade : B and percentage : {self.avg}%")
+        else:
+            print(f"Grade : C and percentage : {self.avg}%")
+
+name = input("Enter your name: ")
+marks = ast.literal_eval(input("Enter your marks: "))
+
+s = Student(name,marks)
+s.calculate_avg()
+s.display_grade()
+
+
+""" 67.Create employee class(name,salary) and manager class(inherits employee + bonus)
+    calculate total salary"""
+
+class Employee:
+    def __init__(self,name,salary):
+        self.name = name
+        self.salary = salary
+
+    def display_info(self):
+        print(f"{self.name} base salary : {self.salary}")
+
+class Manager(Employee):
+    def __init__(self,name,salary,bonus):
+        super().__init__(name,salary)
+        self.bonus = bonus
+    def calculate_total_salary(self):
+        return self.salary + self.bonus
+
+    def display_info(self):
+        super().display_info()
+        print(f"Bonus : {self.bonus}")
+        print(f"{self.name}'s total salary : {self.calculate_total_salary()}")
+
+name = input("Enter your name: ")
+salary = float(input("Enter your salary: "))
+bonus = float(input("Enter your bonus: "))
+m = Manager(name,salary,bonus)
+m.display_info()
