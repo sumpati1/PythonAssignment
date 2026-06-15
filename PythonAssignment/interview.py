@@ -966,3 +966,107 @@ salary = float(input("Enter your salary: "))
 bonus = float(input("Enter your bonus: "))
 m = Manager(name,salary,bonus)
 m.display_info()
+
+
+""" 68.Constructor overloading simulation.
+    Create class Person 
+    accept name or name + age"""
+
+class Person:
+    def __init__(self,name,age = None):
+        self.name = name
+        self.age = age
+
+    def display_info(self):
+        if self.age is not None:
+            print(f"{self.name}'s age : {self.age}")
+        else:
+            print("Name : ",self.name)
+
+p1 = Person("Jayesh")
+p1.display_info()
+
+p2 = Person("Jayesh", 18)
+p2.display_info()
+
+
+""" 69.Generator Function
+    Generate first n fibonacci numbers using yield."""
+
+def fibonacci(n):
+    a,b = 0,1
+
+    for i in range(n):
+        yield a
+        a,b = b,a+b
+
+n = int(input("Enter a number: "))
+
+for num in fibonacci(n):
+        print(num)
+
+
+""" 70.Default + Keyword argument
+    write function that takes name and city = Pune"""
+
+def info(name,city = 'Pune'):
+    print("name : ",name)
+    print("city : ",city)
+
+info("Raj")
+
+info(name = "Amit",city = "Mumbai\n")
+
+info("Vivek",city = "Raipur")
+
+
+""" 71.Method Overriding
+    parent class Animal and child class Dog"""
+
+class Animal:
+    def speak(self):
+        print("Animal speaks")
+
+class Dog(Animal):
+    def speak(self):
+        super().speak()  # Calling parent method
+        print("Dog barks")
+
+d = Dog()
+d.speak()
+
+
+""" 72.Composition Example
+    class Car contains
+     class engine
+     class tyre"""
+
+class engine:
+    def Start(self):
+        print("start engine")
+
+class tyre:
+    def rotate(self):
+        print("tyres are rotating")
+
+class car:
+    def __init__(self):
+        self.engine = engine()
+        self.tyre = tyre()
+
+    def drive(self):
+        self.engine.Start()
+        self.tyre.rotate()
+        print("car is moving")
+
+c = car()
+c.drive()
+
+def palindrome(n):
+    return str(n) == str(n)[::-1]
+
+num = int(input("Enter a number: "))
+if palindrome(num):
+    print("palindrome : ",num)
+else:
+    print("Not a palindrome")
